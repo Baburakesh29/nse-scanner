@@ -8,6 +8,7 @@ on:
 jobs:
   run-scanner:
     runs-on: ubuntu-latest
+    timeout-minutes: 3
 
     steps:
       - name: Checkout repo
@@ -26,4 +27,4 @@ jobs:
           GMAIL_USER: ${{ secrets.GMAIL_USER }}
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
           ALERT_TO_EMAIL: ${{ secrets.ALERT_TO_EMAIL }}
-        run: python nse_auto_oi_email.py
+        run: timeout 120 python nse_auto_oi_email.py
